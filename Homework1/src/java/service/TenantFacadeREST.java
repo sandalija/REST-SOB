@@ -19,6 +19,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 /**
  *
@@ -45,8 +46,14 @@ public class TenantFacadeREST extends AbstractFacade<Tenant> {
     @PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void edit(@PathParam("id") Integer id, Tenant entity) {
+    public Response edit(@PathParam("id") Integer id, Tenant entity) {
+        if (super.find(id) == null)
+        {
+            return Response.status(Response.Status.NOT_FOUND).entity("ROOM no trobada").build();
+        }
         super.edit(entity);
+        return Response.status(Response.Status.OK).build();
+        
     }
 
     @DELETE

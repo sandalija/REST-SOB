@@ -50,15 +50,21 @@ public class RoomFacadeREST extends AbstractFacade<Room> {
     @PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void edit(@PathParam("id") Integer id, Room entity) {
+    public Response edit(@PathParam("id") Integer id, Room entity) {
+        if (super.find(id) == null)
+        {
+            return Response.status(Response.Status.NOT_FOUND).entity("ROOM no trobada").build();
+        }
         super.edit(entity);
+        return Response.status(Response.Status.OK).build();
         
     }
 
     @DELETE
     @Path("{id}")
-    public void remove(@PathParam("id") Integer id) {
+    public Response remove(@PathParam("id") Integer id) {
         super.remove(super.find(id));
+        return Response.status(Response.Status.OK).build();
     }
 
     @GET
