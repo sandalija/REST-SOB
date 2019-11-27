@@ -2,6 +2,11 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/REST-SOB/Homework1/src/java/service/TenantFacadeREST.java</file>
+            <file>file:/C:/REST-SOB/Homework1/web/install.jsp</file>
+            <file>file:/C:/REST-SOB/Homework1/src/java/Practica1/auth/AuthHTTPHeaders.java</file>
+            <file>file:/C:/REST-SOB/Homework1/src/java/Practica1/auth/Users.java</file>
+        </group>
     </open-files>
 </project-private>

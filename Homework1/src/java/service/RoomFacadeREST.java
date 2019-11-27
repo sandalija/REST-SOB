@@ -56,7 +56,7 @@ public class RoomFacadeREST extends AbstractFacade<Room> {
             return Response.status(Response.Status.NOT_FOUND).entity("ROOM no trobada").build();
         }
         super.edit(entity);
-        return Response.status(Response.Status.OK).build();
+        return Response.status(Response.Status.OK).entity(super.find(id)).build();
         
     }
 

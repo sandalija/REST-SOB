@@ -13,6 +13,7 @@ import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -46,7 +47,8 @@ public class TenantFacadeREST extends AbstractFacade<Tenant> {
     @PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response edit(@PathParam("id") Integer id, Tenant entity) {
+    public Response edit(@PathParam("id") Integer id, Tenant entity, 
+            @HeaderParam("name") String name, @HeaderParam("pswd") String pswd) {
         if (super.find(id) == null)
         {
             return Response.status(Response.Status.NOT_FOUND).entity("ROOM no trobada").build();

@@ -45,7 +45,8 @@
                     + "1, 98, 'DONA', 0, 99, 1, 1, 'HOLA')", 
                 "INSERT INTO " + schema + ".TENANT (TENANT_ID, NAME, EMAIL, PHONE, "
                     + "EDAT, SEXE, MASCOTES, FUMADOR) VALUES (213, 'PEPE',"
-                    + " 'mail@mail.com', '+34777666888', 50, 'HOME', 1, 0)"
+                    + " 'mail@mail.com', '+34777666888', 50, 'HOME', 1, 0)",
+                "INSERT INTO " + schema + ".USERS (NAME, PASSWD) VALUES ('user', 'f80ebc87-ad5c-4b29-9366-5359768df5a1')"
             };
             for (String datum : data) {
                 if (stmt.executeUpdate(datum)<=0) {
