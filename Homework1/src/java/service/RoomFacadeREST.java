@@ -141,4 +141,18 @@ public class RoomFacadeREST extends AbstractFacade<Room> {
         return em;
     }
     
+    
+    /*GET
+    @Produces JSON
+    public Response findAll(|QueryParam "sort" String sotr, ...) {
+        if (sort == null) {
+            // retorna ERROR. BADREQUEST . entity (miisatge error);
+          } else if (sort == asc) {
+                // Cridar a la namedQuery
+                Collections lista = em.createNamedQuey(...).getResultList();
+                // Collections con GenericEntity
+            }
+            return ...;
+    
+    */
 }

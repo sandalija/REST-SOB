@@ -27,6 +27,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name= "Room.findAll", query= "SELECT r FROM Room r"),
     @NamedQuery(name = "Room.findByRoomId", query = "SELECT r FROM Room r WHERE r.roomId = :roomId"),
     @NamedQuery(name = "Room.findByLocation", query = "SELECT r FROM Room r WHERE r.location = :location")
+        
+        //Named query OrderBy, una por cada sentido
 })
 @XmlRootElement
 public class Room implements Serializable, Comparable<Room>{
