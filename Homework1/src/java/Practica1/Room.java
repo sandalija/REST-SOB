@@ -1,5 +1,5 @@
 
-package service;
+package Practica1;
 
 import Practica1.Requeriments;
 import Practica1.RoomType;
@@ -26,7 +26,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name= "Room.findAll", query= "SELECT r FROM Room r"),
     @NamedQuery(name = "Room.findByRoomId", query = "SELECT r FROM Room r WHERE r.roomId = :roomId"),
-    @NamedQuery(name = "Room.findByLocation", query = "SELECT r FROM Room r WHERE r.location = :location")
+    @NamedQuery(name = "Room.findByLocation", query = "SELECT r FROM Room r WHERE r.location = :location"),
+    @NamedQuery(name = "Room.OrderByASC", query = "SELECT r FROM Room r ORDER BY r.preu ASC"),
+    @NamedQuery(name = "Room.OrderByDESC", query = "SELECT r FROM Room r ORDER BY r.preu DESC"),
+    @NamedQuery(name = "Room.findByLocationASC", query = "SELECT r FROM Room r WHERE r.location = :location ORDER BY r.preu ASC"),
+    @NamedQuery(name = "Room.findByLocationDESC", query = "SELECT r FROM Room r WHERE r.location = :location ORDER BY r.preu DESC")
         
         //Named query OrderBy, una por cada sentido
 })

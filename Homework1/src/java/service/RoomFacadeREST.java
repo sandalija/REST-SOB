@@ -5,6 +5,7 @@
  */
 package service;
 
+import Practica1.Room;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -14,6 +15,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -74,7 +76,8 @@ public class RoomFacadeREST extends AbstractFacade<Room> {
         return super.find(id);
     }
     
-    /*@GET
+    /*
+    @GET
     @Path("{sort}")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Room> findWithPrice(){
@@ -99,6 +102,7 @@ public class RoomFacadeREST extends AbstractFacade<Room> {
         if (sort ==)
     }*/
     
+    /*
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response findAll(@QueryParam("sort") String sort)
@@ -120,7 +124,9 @@ public class RoomFacadeREST extends AbstractFacade<Room> {
         GenericEntity<List<Room>> generic = new GenericEntity<List<Room>>(RoomList_Ordered){};
         return Response.status(Response.Status.OK).entity(generic).build();
         //return RoomList;
+        
     }
+    */
 
     @GET
     @Path("{from}/{to}")
@@ -142,9 +148,12 @@ public class RoomFacadeREST extends AbstractFacade<Room> {
     }
     
     
-    /*GET
-    @Produces JSON
+    /*
+    @GET
+    @Path({sort})
+    @Produces (MediaType.JSON)
     public Response findAll(|QueryParam "sort" String sotr, ...) {
+        Response 
         if (sort == null) {
             // retorna ERROR. BADREQUEST . entity (miisatge error);
           } else if (sort == asc) {
@@ -155,4 +164,77 @@ public class RoomFacadeREST extends AbstractFacade<Room> {
             return ...;
     
     */
+    
+    /*
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response findByOrder(@QueryParam("sort") String sort)
+    {
+       List<Room> RoomList;
+       GenericEntity<List<Room>> generic;
+       
+       switch (sort) {
+           case "asc": 
+               RoomList = em.createNamedQuery("Room.OrderByASC").getResultList();
+               generic = new GenericEntity<List<Room>>(RoomList){};
+               break;
+           case "desc": 
+               RoomList = em.createNamedQuery("Room.OrderByDESC").getResultList();
+               generic = new GenericEntity<List<Room>>(RoomList){};
+               break;//.entity(em.createNamedQuery("Room.OrderByDESC").getResultList()).build();
+           default:
+               return Response.status(Response.Status.BAD_REQUEST).build();
+       }
+       
+       return Response.status(Response.Status.OK).entity(generic).build();
+       
+    }*/
+    
+    
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response findByLocation(
+            @DefaultValue("1") @QueryParam("location") String location, 
+            @QueryParam("sort") String sort){
+       List<Room> RoomList;
+       GenericEntity<List<Room>> generic;
+       
+       switch (sort) {
+           case "asc": 
+               if (location.equals("1")) {
+                   RoomList = em.createNamedQuery("Room.orderByASC").getResultList();
+               } else {
+                   RoomList = em.createNamedQuery("Room.findByLocationASC").getResultList();
+               }
+               generic = new GenericEntity<List<Room>>(RoomList){};
+               break;
+           case "desc": 
+               if (location.equals("1")) {
+                   RoomList = em.createNamedQuery("Room.orderByDESC").getResultList();
+               } else {
+                   RoomList = em.createNamedQuery("Room.findByLocationDESC").getResultList();
+               }
+               generic = new GenericEntity<List<Room>>(RoomList){};
+               break;//.entity(em.createNamedQuery("Room.OrderByDESC").getResultList()).build();
+           default:
+               return Response.status(Response.Status.BAD_REQUEST).build();
+       }
+       
+       return Response.status(Response.Status.OK).entity(generic).build();
+    }
+    
+    
+    
+       //         GenericEntity<List<Room>> generic = new GenericEntity<List<Room>>(RoomList_Ordered){};
+
+        /*
+        if (sort.equals("asc")) {
+            return Response.status(Response.Status.OK).entity(em.createNamedQuery("Room.OrderByASC").getResultList()).build();
+        } else if (sort.equals("desc")){
+            return Response.status(Response.Status.OK).entity(em.createNamedQuery("Room.OrderByDESC").getResultList()).build();
+        } else {
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }*/
+    
 }

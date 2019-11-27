@@ -6,7 +6,9 @@
             <file>file:/C:/REST-SOB/Homework1/src/java/service/TenantFacadeREST.java</file>
             <file>file:/C:/REST-SOB/Homework1/web/install.jsp</file>
             <file>file:/C:/REST-SOB/Homework1/src/java/Practica1/auth/AuthHTTPHeaders.java</file>
+            <file>file:/C:/REST-SOB/Homework1/src/java/Practica1/Room.java</file>
             <file>file:/C:/REST-SOB/Homework1/src/java/Practica1/auth/Users.java</file>
+            <file>file:/C:/REST-SOB/Homework1/src/java/service/RoomFacadeREST.java</file>
         </group>
     </open-files>
 </project-private>
