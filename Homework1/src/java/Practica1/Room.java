@@ -27,8 +27,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name= "Room.findAll", query= "SELECT r FROM Room r"),
     @NamedQuery(name = "Room.findByRoomId", query = "SELECT r FROM Room r WHERE r.roomId = :roomId"),
     @NamedQuery(name = "Room.findByLocation", query = "SELECT r FROM Room r WHERE r.location = :location"),
-    @NamedQuery(name = "Room.OrderByASC", query = "SELECT r FROM Room r ORDER BY r.preu ASC"),
-    @NamedQuery(name = "Room.OrderByDESC", query = "SELECT r FROM Room r ORDER BY r.preu DESC"),
+    @NamedQuery(name = "Room.orderByASC", query = "SELECT r FROM Room r ORDER BY r.preu ASC"),
+    @NamedQuery(name = "Room.orderByDESC", query = "SELECT r FROM Room r ORDER BY r.preu DESC"),
     @NamedQuery(name = "Room.findByLocationASC", query = "SELECT r FROM Room r WHERE r.location = :location ORDER BY r.preu ASC"),
     @NamedQuery(name = "Room.findByLocationDESC", query = "SELECT r FROM Room r WHERE r.location = :location ORDER BY r.preu DESC")
         

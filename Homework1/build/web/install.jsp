@@ -43,6 +43,11 @@
                     + "MASCOTES, DESCRIPTION) VALUES (NEXT VALUE FOR Room_Gen, "
                     + "'TGN', 'Placa', 1, 1,"
                     + "1, 98, 'DONA', 0, 99, 1, 1, 'HOLA')", 
+                "INSERT INTO " + schema + ".ROOM (ROOM_ID, LOCATION, ADDRESS, SIMPLE, EXTERIOR,  "
+                    + "MOBLADA, PRICE, SEXE, MIN_EDAT, MAX_EDAT, FUMADOR, "
+                    + "MASCOTES, DESCRIPTION) VALUES (NEXT VALUE FOR Room_Gen, "
+                    + "'REUS', 'Carrer', 1, 0,"
+                    + "1, 7, 'HOME', 0, 99, 1, 1, 'CUTRE')", 
                 "INSERT INTO " + schema + ".TENANT (TENANT_ID, NAME, EMAIL, PHONE, "
                     + "EDAT, SEXE, MASCOTES, FUMADOR) VALUES (213, 'PEPE',"
                     + " 'mail@mail.com', '+34777666888', 50, 'HOME', 1, 0)",
