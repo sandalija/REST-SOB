@@ -45,8 +45,9 @@ public class RoomFacadeREST extends AbstractFacade<Room> {
     @POST
     @Override
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void create(Room entity) {
+    public Response create(Room entity) {
         super.create(entity);
+        return Response.status(Response.Status.OK).build();
     }
 
     @PUT

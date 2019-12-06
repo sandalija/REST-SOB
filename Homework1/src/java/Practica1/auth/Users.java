@@ -5,45 +5,57 @@
  */
 package Practica1.auth;
 
+import Practica1.Room;
+import java.io.Serializable;
+import static java.util.Collections.list;
+import java.util.LinkedList;
+import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
 /**
  *
  * @author sergi
  */
-public class Users {
+@Entity
+@Table(name = "USERS")
+@NamedQuery(name = "Room.findUser", query = "SELECT u FROM Users u WHERE u.hashCode = :hashCode")
+public class Users implements Serializable{
+    private static final long serialVersionUID = 1L;
+    @Id @Column(name = "USERNAME")
+    private String username;
+    @Column(name = "HASH_CODE")
+    private String hashCode;
+
+    public Users() {
+    }
+
     
-    private String name;
-    private String sexe;
-    private int edat;
-
-    public Users(String name, String sexe, int edat) {
-        this.name = name;
-        this.sexe = sexe;
-        this.edat = edat;
+    public Users(String username, String hash) {
+        this.username = username;
+        this.hashCode = hash;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getSexe() {
-        return sexe;
+    public String getHashCode() {
+        return hashCode;
     }
 
-    public void setSexe(String sexe) {
-        this.sexe = sexe;
+    public void setHashCode(String hash) {
+        this.hashCode = hash;
     }
-
-    public int getEdat() {
-        return edat;
-    }
-
-    public void setEdat(int edat) {
-        this.edat = edat;
-    }
+    
+    
     
     
 }
