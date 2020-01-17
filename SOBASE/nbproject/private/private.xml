@@ -3,7 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Marc/Desktop/Courses/17-18/SOB/SOBASE_with_isntall_and_autosetup/SOBASE/web/view.jsp</file>
+            <file>file:/C:/REST-SOB/SOBASE/src/java/cat/urv/deim/sob/command/RoomCommand.java</file>
+            <file>file:/C:/REST-SOB/SOBASE/src/java/cat/urv/deim/sob/command/Command.java</file>
+            <file>file:/C:/REST-SOB/SOBASE/src/java/cat/urv/deim/sob/ControllerServlet.java</file>
+            <file>file:/C:/REST-SOB/SOBASE/src/java/cat/urv/deim/sob/command/InitCommand.java</file>
+            <file>file:/C:/REST-SOB/SOBASE/src/java/cat/urv/deim/sob/command/FindRoomCommand.java</file>
+            <file>file:/C:/REST-SOB/SOBASE/web/WEB-INF/web.xml</file>
         </group>
     </open-files>
 </project-private>

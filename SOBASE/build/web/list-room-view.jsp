@@ -15,9 +15,16 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <% List<Room> lr = request.getAttribute("lista");
-            for (Room r : lr) { %>
-    <tr> <td> <% r.roomId; %> </td> </tr>
-    <% } %>
+        <p>Bla</p>
+        <%
+            /*List<Room> searchResults = (List<Room>) request.getAttribute("room");
+                for (Room r : searchResults) {
+
+                    out.print(r.getPreu());
+                } */
+            Room rm = new Room();
+            rm.setAdreca("aqui");
+            out.println(rm.getAdreca());
+        %>
     </body>
 </html>

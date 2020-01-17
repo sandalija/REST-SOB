@@ -24,19 +24,20 @@ public class RoomCommand implements Command{
             response) throws ServletException, IOException {
         
         // Room r = new Room();
-        int id = 50;
+        int id = Integer.parseInt(request.getParameter("id"));
         RoomClient c = new RoomClient();
         Response res = c.find(id);
         
         System.out.println("STATUS: " + res.getStatus());
+        System.out.println("ID A BUSCAR: " + id);
 
                 
         if(res.getStatus() == 200) {
             Room room = res.readEntity(Room.class);
             request.setAttribute("room", room);
-            System.out.println(room.getRoomId());
+            System.out.println("BUSCO A LA BD: " + room.getRoomId());
             request.getRequestDispatcher("/room-view.jsp").forward(request, response);
         }
-    }
     
+    }
 }

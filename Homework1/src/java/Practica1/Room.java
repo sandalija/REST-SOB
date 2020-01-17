@@ -52,11 +52,7 @@ public class Room implements Serializable, Comparable<Room>{
     @Embedded
     private Requeriments requeriments;
     @Column(name="DESCRIPTION")
-    private String description; 
-    @Embedded 
-    private Landlord landlord;
-    
-    
+    private String description;    
             
     public Room() {
     }
@@ -86,15 +82,6 @@ public class Room implements Serializable, Comparable<Room>{
     public int compareTo(Room obj){
        return ((int) (this.preu  -  obj.getPreu()));
     }
-    
-    public Landlord getLandlord(){
-        return this.landlord;
-    }
-    
-    public void setLandlord(Landlord ld){
-        this.landlord = ld;
-    }
-    
     
     public String getAdreca() {
         return adreca;

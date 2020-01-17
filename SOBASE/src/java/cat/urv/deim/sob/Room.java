@@ -60,6 +60,10 @@ public class Room implements Serializable, Comparable<Room>{
     public int compareTo(Room obj){
        return ((int) (this.preu  -  obj.getPreu()));
     }
+
+    public void setRoomId(int roomId) {
+        this.roomId = roomId;
+    }
     
     
     public String getAdreca() {

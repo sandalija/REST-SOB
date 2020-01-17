@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Tenant implements Serializable{
     private static final long serialVersionUID = 1L;
-    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Tenant_Gen")
+    @Id   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Tenant_Gen")
     @Column(name= "TENANT_ID")
     private Integer tenantId;
     @Size(max = 30)
@@ -44,8 +44,6 @@ public class Tenant implements Serializable{
     private int mascotes;
     @Column(name= "FUMADOR")
     private int fumador;
-    @Column(name="RENT") // ID de la habitació que té reservada
-    private int id_rent;
     
     public Tenant() {
     }
@@ -54,14 +52,6 @@ public class Tenant implements Serializable{
         return edat;
     }
 
-    public int getId_rent() {
-        return id_rent;
-    }
-
-    public void setId_rent(int id_rent) {
-        this.id_rent = id_rent;
-    }
-    
     public void setEdat(int edat) {
         this.edat = edat;
     }
@@ -133,6 +123,22 @@ public class Tenant implements Serializable{
     public void setFumador(int fumador) {
         this.fumador = fumador;
     }
+/*
+    @Override
+    public String toString() {
+        return "Tenant{" + "tenantId=" + tenantId + ", nom=" + nom + ", "
+                + "email=" + email + ", tlf=" + tlf + ", edat=" + edat + ", "
+                + "sexe=" + sexe + ", mascotes=" + mascotes + ", fumador=" 
+                + fumador + '}';
+    }*/
+    
+    
+    
+    
+    
 
+    
+    
+    
     
 }

@@ -26,17 +26,30 @@ public class FindRoomCommand implements Command {
             throws ServletException, IOException {
         
         RoomClient c = new RoomClient();
-        Response res = c.findByLocation("desc", null);
+        Response res = c.findByLocation(null, "desc");
         
-        System.out.println("STATUS: " + res.getStatus());
+        System.out.println("STATUS (): " + res.getStatus());
 
                 
         if(res.getStatus() == 200) {
             List<Room> RoomList;
             RoomList = res.readEntity(
                 new GenericType<List<Room>>() {});
-            request.setAttribute("lista", RoomList);
+            /* request.setAttribute("lista", RoomList);
+            Room tmp;
+            for(int i = 0; i < RoomList.size(); i++){
+                tmp = RoomList.get(i);
+                System.out.println(tmp.toString());
+            } */
+            
+            // Hasta aqui, la lista está OK
+            // request.getRequestDispatcher("/list-room-view.jsp").forward(request, response);
+            Room first = RoomList.get(0);
+            System.out.println(first.getLocation());
+            request.setAttribute("room", first);
             request.getRequestDispatcher("/list-room-view.jsp").forward(request, response);
+        } else {
+            System.out.println(res.getAllowedMethods());
         }
     }
     

@@ -45,9 +45,8 @@ public class RoomFacadeREST extends AbstractFacade<Room> {
     @POST
     @Override
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Response create(Room entity) {
+    public void create(Room entity) {
         super.create(entity);
-        return Response.status(Response.Status.OK).build();
     }
 
     @PUT
@@ -66,8 +65,13 @@ public class RoomFacadeREST extends AbstractFacade<Room> {
     @DELETE
     @Path("{id}")
     public Response remove(@PathParam("id") Integer id) {
-        super.remove(super.find(id));
-        return Response.status(Response.Status.OK).build();
+        if (super.find(id) != null){
+            super.remove(super.find(id));
+            return Response.status(Response.Status.OK).build();
+
+        }
+        return Response.status(Response.Status.NOT_FOUND).entity("ROOM no trobada").build();
+
     }
 
     @GET
@@ -129,20 +133,9 @@ public class RoomFacadeREST extends AbstractFacade<Room> {
     }
     */
 
-    @GET
-    @Path("{from}/{to}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Room> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
-        return super.findRange(new int[]{from, to});
-    }
+    
 
-    @GET
-    @Path("count")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String countREST() {
-        return String.valueOf(super.count());
-    }
-
+   
     @Override
     protected EntityManager getEntityManager() {
         return em;

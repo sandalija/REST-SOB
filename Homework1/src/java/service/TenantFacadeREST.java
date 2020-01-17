@@ -5,10 +5,7 @@
  */
 package service;
 
-import Practica1.Room;
 import Practica1.Tenant;
-import Practica1.auth.Users;
-import java.util.LinkedList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -43,13 +40,8 @@ public class TenantFacadeREST extends AbstractFacade<Tenant> {
     @POST
     @Override
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Response create(Tenant entity) {
-        if (entity.getSexe().equals("HOME") || entity.getSexe().equals("DONA") || entity.getSexe().equals("UNISEX")){
-                super.create(entity);
-                return Response.status(Response.Status.OK).build();
-        } else {
-            return Response.status(Response.Status.BAD_REQUEST).entity("Sexe no válid").build();
-        }
+    public void create(Tenant entity) {
+        super.create(entity);
     }
 
     @PUT
@@ -59,7 +51,7 @@ public class TenantFacadeREST extends AbstractFacade<Tenant> {
             @HeaderParam("name") String name, @HeaderParam("pswd") String pswd) {
         if (super.find(id) == null)
         {
-            return Response.status(Response.Status.NOT_FOUND).entity("ROOM no trobada").build();
+            return Response.status(Response.Status.NOT_FOUND).entity("Tenant no trobat").build();
         }
         super.edit(entity);
         return Response.status(Response.Status.OK).build();
@@ -68,15 +60,24 @@ public class TenantFacadeREST extends AbstractFacade<Tenant> {
 
     @DELETE
     @Path("{id}")
-    public void remove(@PathParam("id") Integer id) {
+    public Response remove(@PathParam("id") Integer id) {
+        if (super.find(id) == null)
+        {
+            return Response.status(Response.Status.NOT_FOUND).entity("Tenant no trobat").build();
+        }
         super.remove(super.find(id));
+        return Response.status(Response.Status.OK).build();
     }
 
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Tenant find(@PathParam("id") Integer id) {
-        return super.find(id);
+    public Response find(@PathParam("id") Integer id) {
+        if (super.find(id) == null)
+        {
+            return Response.status(Response.Status.NOT_FOUND).entity("Tenant no trobat").build();
+        }
+        return Response.status(Response.Status.OK).entity(super.find(id)).build();
     }
 
     @GET
@@ -86,62 +87,16 @@ public class TenantFacadeREST extends AbstractFacade<Tenant> {
         return super.findAll();
     }
 
-    @POST
-    @Path("{id}/rent")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response edit(@PathParam("id") Integer id, Room room){
-        
-        /*
-        // Autentification
-        if (!auten(user)) {
-            return Response.status(Response.Status.METHOD_NOT_ALLOWED).build();
-        }
-        */
-        
-        Tenant tenant = super.find(id);
-        if (tenant == null) return Response.status(Response.Status.NOT_FOUND).build();
-        // comprovar si satisfà les condicions7
-        if (room.getRequeriments().getFumador() == 1 && tenant.getFumador() == 0){
-            return Response.status(Response.Status.BAD_REQUEST).entity("No s'accepten fumadors").build();
-        }
-        if (room.getRequeriments().getMascotes() == 1 && tenant.getMascotes() == 0){
-            return Response.status(Response.Status.BAD_REQUEST).entity("No s'accepten mascotes").build();
-        }
-        if (tenant.getEdat() < room.getRequeriments().getMinEdat() || tenant.getEdat() > room.getRequeriments().getMaxEdat()){
-            return Response.status(Response.Status.BAD_REQUEST).entity("Edat no vàlida").build();
-        }
-        if (tenant.getSexe().equals("HOME") && room.getRequeriments().getSexe().equals("DONA")){
-            return Response.status(Response.Status.BAD_REQUEST).entity("Només per a dones").build();
-
-        }
-        if (tenant.getSexe().equals("DONA") && room.getRequeriments().getSexe().equals("HOME")){
-            return Response.status(Response.Status.BAD_REQUEST).entity("Només per a homes").build();
-        }
-        // comprovar si no té una habitació ja reservada
-        if (tenant.getId_rent()!=0){
-            return Response.status(Response.Status.BAD_REQUEST).entity("Ja tens una habitació").build();
-        }
-        tenant.setId_rent(room.getRoomId());
-        return Response.status(Response.Status.OK).entity(room.getLandlord()).build();
+    @GET
+    @Path("count")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String countREST() {
+        return String.valueOf(super.count());
     }
 
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
-    
-    /*
-    public boolean auten(Users u){
-        Users tmp = em.createNamedQuery("Users.findUser", Users.class).setParameter("username", u.getUsername()).getSingleResult();
-        if (tmp.getHashCode().equals(u.getHashCode())) return true;
-        else return false;
-        
-    }*/
-    
-    
-   
-
-    
     
 }
