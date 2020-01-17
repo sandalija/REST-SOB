@@ -1,7 +1,6 @@
 
 package cat.urv.deim.sob;
 
-
 import java.io.Serializable;
 import java.util.Comparator;
 import javax.persistence.Basic;
@@ -20,17 +19,40 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
-
+@Entity
+@Table(name = "ROOM")
+@NamedQueries({
+    @NamedQuery(name= "Room.findAll", query= "SELECT r FROM Room r"),
+    @NamedQuery(name = "Room.findByRoomId", query = "SELECT r FROM Room r WHERE r.roomId = :roomId"),
+    @NamedQuery(name = "Room.findByLocation", query = "SELECT r FROM Room r WHERE r.location = :location"),
+    @NamedQuery(name = "Room.orderByASC", query = "SELECT r FROM Room r ORDER BY r.preu ASC"),
+    @NamedQuery(name = "Room.orderByDESC", query = "SELECT r FROM Room r ORDER BY r.preu DESC"),
+    @NamedQuery(name = "Room.findByLocationASC", query = "SELECT r FROM Room r WHERE r.location = :location ORDER BY r.preu ASC"),
+    @NamedQuery(name = "Room.findByLocationDESC", query = "SELECT r FROM Room r WHERE r.location = :location ORDER BY r.preu DESC")
+        
+        //Named query OrderBy, una por cada sentido
+})
 @XmlRootElement
 public class Room implements Serializable, Comparable<Room>{
     private static final long serialVersionUID = 1L;
+    @Id 
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Room_Gen")
+    @Column(name="ROOM_ID")
     private int roomId;
+    @Column(name = "LOCATION")
     private String location; //ciutat
+    @Column(name = "ADDRESS")
     private String adreca;
+    @Embedded
     private RoomType roomType;
+    @Column(name = "PRICE")
     private float preu;
+    @Embedded
     private Requeriments requeriments;
-    private String description;    
+    @Column(name="DESCRIPTION")
+    private String description;
+    @Column(name="IMG")
+    private String img;
             
     public Room() {
     }
@@ -44,6 +66,19 @@ public class Room implements Serializable, Comparable<Room>{
         this.roomType = new RoomType(b1, b2, b3);
         this.preu = preu;
         this.requeriments = new Requeriments(r1, min, max, r4, r5);
+        this.img = null;
+    }
+    
+     public Room(int id, String location, String adreça, int b1, 
+            int b2, int b3, float preu, String r1, int min, int max, 
+            int r4, int r5, String img) {
+        this.roomId = id;
+        this.location = location;
+        this.adreca = adreça;
+        this.roomType = new RoomType(b1, b2, b3);
+        this.preu = preu;
+        this.requeriments = new Requeriments(r1, min, max, r4, r5);
+        this.img = img;
     }
     
     public Room(String location, String adreça, int b1, 
@@ -60,11 +95,6 @@ public class Room implements Serializable, Comparable<Room>{
     public int compareTo(Room obj){
        return ((int) (this.preu  -  obj.getPreu()));
     }
-
-    public void setRoomId(int roomId) {
-        this.roomId = roomId;
-    }
-    
     
     public String getAdreca() {
         return adreca;
@@ -81,8 +111,14 @@ public class Room implements Serializable, Comparable<Room>{
     public void setRequeriments(Requeriments requeriments) {
         this.requeriments = requeriments;
     }
-    
-    
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    } 
 
     public String getDescription() {
         return description;

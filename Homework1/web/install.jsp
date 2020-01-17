@@ -40,9 +40,9 @@
                 "INSERT INTO " + schema + ".COMMENT VALUES (NEXT VALUE FOR COMMENT_GEN, 'for homework1')",
                 "INSERT INTO " + schema + ".ROOM (ROOM_ID, LOCATION, ADDRESS, SIMPLE, EXTERIOR,  "
                     + "MOBLADA, PRICE, SEXE, MIN_EDAT, MAX_EDAT, FUMADOR, "
-                    + "MASCOTES, DESCRIPTION) VALUES (NEXT VALUE FOR Room_Gen, "
+                    + "MASCOTES, DESCRIPTION, IMG) VALUES (NEXT VALUE FOR Room_Gen, "
                     + "'Tarragona', 'Placa', 0, 1,"
-                    + "1, 200, 'DONA', 0, 99, 1, 1, 'HOLA')", 
+                    + "1, 200, 'DONA', 0, 99, 1, 1, 'HOLA', 'https://st.hzcdn.com/fimgs/36110e0a0f877044_0838-w144-h144-b0-p0--modern-living-room.jpg')", 
                 "INSERT INTO " + schema + ".ROOM (ROOM_ID, LOCATION, ADDRESS, SIMPLE, EXTERIOR,  "
                     + "MOBLADA, PRICE, SEXE, MIN_EDAT, MAX_EDAT, FUMADOR, "
                     + "MASCOTES, DESCRIPTION) VALUES (NEXT VALUE FOR Room_Gen, "

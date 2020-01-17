@@ -52,7 +52,9 @@ public class Room implements Serializable, Comparable<Room>{
     @Embedded
     private Requeriments requeriments;
     @Column(name="DESCRIPTION")
-    private String description;    
+    private String description;
+    @Column(name="IMG")
+    private String img;
             
     public Room() {
     }
@@ -66,6 +68,19 @@ public class Room implements Serializable, Comparable<Room>{
         this.roomType = new RoomType(b1, b2, b3);
         this.preu = preu;
         this.requeriments = new Requeriments(r1, min, max, r4, r5);
+        this.img = null;
+    }
+    
+     public Room(int id, String location, String adreça, int b1, 
+            int b2, int b3, float preu, String r1, int min, int max, 
+            int r4, int r5, String img) {
+        this.roomId = id;
+        this.location = location;
+        this.adreca = adreça;
+        this.roomType = new RoomType(b1, b2, b3);
+        this.preu = preu;
+        this.requeriments = new Requeriments(r1, min, max, r4, r5);
+        this.img = img;
     }
     
     public Room(String location, String adreça, int b1, 
@@ -98,8 +113,14 @@ public class Room implements Serializable, Comparable<Room>{
     public void setRequeriments(Requeriments requeriments) {
         this.requeriments = requeriments;
     }
-    
-    
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    } 
 
     public String getDescription() {
         return description;

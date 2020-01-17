@@ -78,7 +78,9 @@ public class RoomFacadeREST extends AbstractFacade<Room> {
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Room find(@PathParam("id") Integer id) {
-        return super.find(id);
+        Room room = super.find(id);
+        System.out.println("IMG: "+room.getImg());
+        return room;
     }
     
     /*
