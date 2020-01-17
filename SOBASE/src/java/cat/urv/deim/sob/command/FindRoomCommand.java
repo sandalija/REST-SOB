@@ -26,14 +26,20 @@ public class FindRoomCommand implements Command {
             throws ServletException, IOException {
         
         RoomClient c = new RoomClient();
-        Response res = c.findByLocation(null, "desc");
+        String sort = request.getParameter("sort");
+        String location = request.getParameter("location");
+        System.out.println(location);
+        System.out.println(sort);
+        Response res = c.findByLocation(location, sort);
+        
+        
         
         System.out.println("STATUS (): " + res.getStatus());
 
                 
         if(res.getStatus() == 200) {
-            List<Room> RoomList;
-            RoomList = res.readEntity(
+            List<Room> roomList;
+            roomList = res.readEntity(
                 new GenericType<List<Room>>() {});
             /* request.setAttribute("lista", RoomList);
             Room tmp;
@@ -43,11 +49,12 @@ public class FindRoomCommand implements Command {
             } */
             
             // Hasta aqui, la lista está OK
-            // request.getRequestDispatcher("/list-room-view.jsp").forward(request, response);
-            Room first = RoomList.get(0);
-            System.out.println(first.getLocation());
-            request.setAttribute("room", first);
+            request.setAttribute("list-room", roomList);
+            request.setCharacterEncoding("UTF-8");
+
             request.getRequestDispatcher("/list-room-view.jsp").forward(request, response);
+            //Room first = RoomList.get(0);
+            //System.out.println(first.getLocation());
         } else {
             System.out.println(res.getAllowedMethods());
         }
