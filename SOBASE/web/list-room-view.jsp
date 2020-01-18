@@ -14,20 +14,13 @@
        <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="./styles.css" type="text/css" />
         <script type="text/javascript">
             document.getElementById("myButton").onclick = function () {
                 location.href = "http://localhost:8080/SOBASE/list-room.do?sort=asc";
             };
         </script>
-        <style> 
-            .order-label {
-               margin: 4px;
-               padding: 4px;
-            }
-            .button-left-down {
-                margin: left;
-            }
-        </style>
+
         <title>Rooms</title>
     </head>
     <body>
@@ -54,6 +47,7 @@
         <%
             List<Room> searchResults = (List<Room>) request.getAttribute("list-room");
             String sort = request.getParameter("sort");
+            String base = "/SOBASE/room.do?id=";
             if (sort != null && searchResults != null) {
                 %> 
                 <ul class="list-group"> 
@@ -79,8 +73,11 @@
                                     %> <p> <% out.print("Pets OK"); %> </p> <%
                                   }else if (requerim.getFumador() == 1) { 
                                     %> <p> <% out.print("Smoke OK"); %> </p> <%
-                                  } %>
-                                  <a class="btn button-left-down" href="http://localhost:8080/SOBASE/room?=${r.roomId}" role="button">View</a>
+                                  } 
+                                  
+                                  String url = base + r.getRoomId();
+                                  %>
+                                  <a class="btn button-left-down" href="<%=url%>" role="button">View</a>
                                 </div>
                             </li>      
                     <% }

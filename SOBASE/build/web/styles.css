@@ -8,3 +8,16 @@ and open the template in the editor.
     Author     : sergi
 */
 
+.order-label {
+    margin: 4px;
+    padding: 4px;
+ }
+ 
+ .button-left-down {
+     margin: left;
+ }
+ 
+.extra_margin {
+    margin-top: 15px;
+    margin-left: 8px;
+}
