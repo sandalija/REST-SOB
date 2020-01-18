@@ -195,10 +195,19 @@ public class RoomFacadeREST extends AbstractFacade<Room> {
             @QueryParam("sort") String sort){
        List<Room> RoomList;
        GenericEntity<List<Room>> generic;
+
        
+       String newLocation; 
+
+
        if (sort == null) {
             return Response.status(Response.Status.BAD_REQUEST).build();
        }
+       if (location != null) {
+           newLocation = location.substring(0, 1).toUpperCase() + location.substring(1).toLowerCase();
+           location = newLocation;
+       }
+       
        switch (sort) {
            case "asc": 
                if (location == null) {

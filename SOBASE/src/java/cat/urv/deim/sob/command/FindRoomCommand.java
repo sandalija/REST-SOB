@@ -24,12 +24,15 @@ public class FindRoomCommand implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+                
+        
+        
         
         RoomClient c = new RoomClient();
         String sort = request.getParameter("sort");
         String location = request.getParameter("location");
         System.out.println(location);
-        System.out.println(sort);
+        System.out.println(sort);        
         Response res = c.findByLocation(location, sort);
         
         
@@ -37,7 +40,7 @@ public class FindRoomCommand implements Command {
         System.out.println("STATUS (): " + res.getStatus());
 
                 
-        if(res.getStatus() == 200) {
+        if(res.getStatus() == 200) {       
             List<Room> roomList;
             roomList = res.readEntity(
                 new GenericType<List<Room>>() {});

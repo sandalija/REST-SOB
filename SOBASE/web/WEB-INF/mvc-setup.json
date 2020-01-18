@@ -13,9 +13,8 @@
       "class": "cat.urv.deim.sob.command.RoomCommand" 
     },
     {
-    "URI": "/list-room",
-    "class": "cat.urv.deim.sob.command.FindRoomCommand" 
-
+      "URI": "/list-room",
+      "class": "cat.urv.deim.sob.command.FindRoomCommand" 
     }
   ]
 }
