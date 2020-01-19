@@ -90,7 +90,9 @@
                     + " 'mail5@mail.com', '+34777666888', 32, 'HOME', 0, 0)" ,
                 "INSERT INTO " + schema + ".TENANT (TENANT_ID, NAME, EMAIL, PHONE, "
                     + "EDAT, SEXE, MASCOTES, FUMADOR) VALUES (202, 'Mike',"
-                    + " 'mail6@mail.com', '+34777666888', 19, 'HOME', 1, 1)" 
+                    + " 'mail6@mail.com', '+34777666888', 19, 'HOME', 1, 1)" ,
+                "INSERT INTO " + schema + ".USUARI (USUARI_ID, USERNAME, PASSWORD, " 
+                       + "TENANT_ID) VALUES (1, 'sob', 'sob', 0)"
             };
             for (String datum : data) {
                 if (stmt.executeUpdate(datum)<=0) {

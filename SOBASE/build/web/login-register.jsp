@@ -18,7 +18,7 @@
             <form class="form-signin">
                 <h1 class="h3 mb-3 font-weight-normal order-label">Please sign in</h1>
                 <label for="inputEmail" class="sr-only">Username</label>
-                <input type="email" id="inputEmail" class="form-control order-label" placeholder="Username" required autofocus>
+                <input type="text" id="inputEmail" class="form-control order-label" placeholder="Username" required>
                 <input type="password" id="inputPassword" class="form-control order-label" placeholder="Password" required>
                 <button class="btn btn-lg btn-primary btn-block order-label" type="submit">Sign in</button>
                 <lr />

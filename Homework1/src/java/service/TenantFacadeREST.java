@@ -5,7 +5,9 @@
  */
 package service;
 
+import Practica1.Room;
 import Practica1.Tenant;
+import Practica1.auth.User;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -19,6 +21,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -98,5 +101,20 @@ public class TenantFacadeREST extends AbstractFacade<Tenant> {
     protected EntityManager getEntityManager() {
         return em;
     }
+    
+    @GET
+    @Path("login/{username}/{password}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response login(String username, String password) {
+        GenericEntity<List<User>> generic;
+        List<User> userList = em.createNamedQuery("User.login")
+                .setParameter("username", username)
+                .setParameter("password", password)
+                .getResultList();
+        generic = new GenericEntity<List<User>>(userList.subList(0, 1)) {
+        };
+        return Response.status(Response.Status.OK).entity(generic).build();
+    }
+    
     
 }
