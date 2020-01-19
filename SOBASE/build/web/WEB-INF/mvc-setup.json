@@ -15,6 +15,10 @@
     {
       "URI": "/list-room",
       "class": "cat.urv.deim.sob.command.FindRoomCommand" 
+    },
+    {
+      "URI": "/login",
+      "class": "cat.urv.deim.sob.command.LoginCommand" 
     }
   ]
 }
