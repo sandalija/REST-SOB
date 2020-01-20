@@ -21,7 +21,9 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.GenericEntity;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -102,15 +104,17 @@ public class TenantFacadeREST extends AbstractFacade<Tenant> {
         return em;
     }
     
-    @GET
-    @Path("login/{username}/{password}")
+    @POST
+    @Path("login")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response login(@PathParam("username") String username, @PathParam("password") String password) {
+    public Response login(@HeaderParam("username") String u,
+            @HeaderParam("password") String p) {
+        
         GenericEntity<List<User>> generic;
-        System.out.println("USER: "+ username);
+        // System.out.println("USER: "+ username);
         List<User> userList = em.createNamedQuery("Usuari.login")
-                .setParameter("username", username)
-                .setParameter("password", password)
+                .setParameter("username", u)
+                .setParameter("password", p)
                 .getResultList();
         generic = new GenericEntity<List<User>>(userList.subList(0, 1)) {
         };

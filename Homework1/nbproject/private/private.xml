@@ -4,9 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/REST-SOB/Homework1/src/java/service/TenantFacadeREST.java</file>
+            <file>file:/C:/REST-SOB/Homework1/web/install.jsp</file>
+            <file>file:/C:/REST-SOB/Homework1/src/java/Practica1/Room.java</file>
             <file>file:/C:/REST-SOB/Homework1/src/java/service/RoomFacadeREST.java</file>
             <file>file:/C:/REST-SOB/Homework1/src/java/Practica1/Tenant.java</file>
             <file>file:/C:/REST-SOB/Homework1/nbproject/build-impl.xml</file>
+            <file>file:/C:/REST-SOB/Homework1/src/java/Practica1/auth/User.java</file>
         </group>
     </open-files>
 </project-private>

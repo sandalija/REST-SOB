@@ -1,53 +1,85 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package cat.urv.deim.sob;
 
-public class User {
+import java.io.Serializable;
+import javax.persistence.*;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String phone;
+/**
+ *
+ * @author sergi
+ */
+@Entity
+@Table(name="USUARI")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Usuari.findByUsername", query = "SELECT u FROM User u WHERE u.username = :username"),
+    @NamedQuery(name = "Usuari.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password"),
+    @NamedQuery(name = "Usuari.login", query = "SELECT u FROM User u WHERE u.username = :username AND u.password = :password")
+})
+public class User implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
+    @Id     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "User_Gen")
+    @Column(name = "USUARI_ID")
+    private int usuari_id;
+    @Size(max = 32)
+    @Column(name = "USERNAME")
+    private String username;
+    @Size(max = 32)
+    @Column(name = "PASSWORD")
+    private String password;
+    @Column(name = "TENANT_ID")
+    private int tenant_id;
 
-    public String getFirstName() {
-        return fixNull(this.firstName);
+    public User() {
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public User(int usuari_id, String username, String password, int tenant_id) {
+        this.usuari_id = usuari_id;
+        this.username = username;
+        this.password = password;
+        this.tenant_id = tenant_id;
     }
 
-    public String getLastName() {
-        return fixNull(this.lastName);
+    public int getUsuari_id() {
+        return usuari_id;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setUsuari_id(int usuari_id) {
+        this.usuari_id = usuari_id;
     }
 
-    public String getEmail() {
-        return fixNull(this.email);
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getPhone() {
-        return fixNull(this.phone);
+    public String getPassword() {
+        return password;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    private String fixNull(String in) {
-        return (in == null) ? "" : in;
+    public int getTenant_id() {
+        return tenant_id;
     }
 
-    public String getMessage() {
-
-        return "\nFirst Name: " + getFirstName() + "\n"
-                + "Last Name:  " + getLastName() + "\n"
-                + "Email:      " + getEmail() + "\n"
-                + "Phone:      " + getPhone() + "\n";
+    public void setTenant_id(int tenant_id) {
+        this.tenant_id = tenant_id;
     }
+
+   
+    
 }

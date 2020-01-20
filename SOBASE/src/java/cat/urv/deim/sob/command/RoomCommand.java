@@ -38,6 +38,5 @@ public class RoomCommand implements Command{
             System.out.println("BUSCO A LA BD: " + room.getRoomId());
             request.getRequestDispatcher("/room-view.jsp").forward(request, response);
         }
-    
     }
 }

@@ -1,14 +1,6 @@
 {
   "commands": [
     {
-      "URI": "/init",
-      "class": "cat.urv.deim.sob.command.InitCommand" 
-    },
-    {
-      "URI": "/write",
-      "class": "cat.urv.deim.sob.command.WriteCommand" 
-    },
-    {
       "URI": "/room",
       "class": "cat.urv.deim.sob.command.RoomCommand" 
     },
