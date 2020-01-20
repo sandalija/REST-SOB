@@ -29,3 +29,11 @@ and open the template in the editor.
     transform: translate(-50%, -50%);
     width: 250px;
 }
+
+.resize {
+  
+  position:absolute;
+  top: 30%;
+  right: 25px;
+  
+} 

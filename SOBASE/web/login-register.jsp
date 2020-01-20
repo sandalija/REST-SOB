@@ -14,6 +14,8 @@
         <title>Login</title>
     </head>
     <body>
+        <%@ include file="/navbar.jsp"  %>
+
         <div class="center-login">
             <form class="form-signin">
                 <h1 class="h3 mb-3 font-weight-normal order-label">Please sign in</h1>
