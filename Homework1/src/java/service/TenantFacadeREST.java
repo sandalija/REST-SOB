@@ -105,9 +105,10 @@ public class TenantFacadeREST extends AbstractFacade<Tenant> {
     @GET
     @Path("login/{username}/{password}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response login(String username, String password) {
+    public Response login(@PathParam("username") String username, @PathParam("password") String password) {
         GenericEntity<List<User>> generic;
-        List<User> userList = em.createNamedQuery("User.login")
+        System.out.println("USER: "+ username);
+        List<User> userList = em.createNamedQuery("Usuari.login")
                 .setParameter("username", username)
                 .setParameter("password", password)
                 .getResultList();
