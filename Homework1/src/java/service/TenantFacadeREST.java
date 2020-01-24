@@ -78,6 +78,7 @@ public class TenantFacadeREST extends AbstractFacade<Tenant> {
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response find(@PathParam("id") Integer id) {
+        System.out.println("TENANT REST find: "+ super.find(id));
         if (super.find(id) == null)
         {
             return Response.status(Response.Status.NOT_FOUND).entity("Tenant no trobat").build();

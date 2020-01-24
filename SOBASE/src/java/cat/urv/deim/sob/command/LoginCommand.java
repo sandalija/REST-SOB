@@ -40,7 +40,7 @@ public class LoginCommand implements Command{
         String p = request.getParameter("password");
         
         TenantClient c = new TenantClient();
-        Response res = c.find(response, "213");      
+        Response res = c.find(null, "213");      
         
         System.out.println("STATUS: " + res.getStatus());
         System.out.println("username A BUSCAR: " + u);

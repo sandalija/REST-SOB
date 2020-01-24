@@ -73,6 +73,5 @@ public class TenantClient {
     public void close() {
         client.close();
     }
-
     
 }

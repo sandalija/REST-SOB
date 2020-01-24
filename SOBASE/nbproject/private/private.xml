@@ -3,21 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/REST-SOB/SOBASE/web/WEB-INF/mvc-setup.json</file>
-            <file>file:/C:/REST-SOB/SOBASE/src/java/cat/urv/deim/sob/command/FindRoomCommand.java</file>
-            <file>file:/C:/REST-SOB/SOBASE/web/list-room-view.jsp</file>
+            <file>file:/C:/REST-SOB/SOBASE/src/java/cat/urv/deim/sob/TenantClient.java</file>
+            <file>file:/C:/REST-SOB/SOBASE/src/java/cat/urv/deim/sob/Tenant.java</file>
             <file>file:/C:/REST-SOB/SOBASE/src/java/cat/urv/deim/sob/command/LoginCommand.java</file>
-            <file>file:/C:/REST-SOB/SOBASE/nbproject/build-impl.xml</file>
-            <file>file:/C:/REST-SOB/SOBASE/web/login-register.jsp</file>
-            <file>file:/C:/REST-SOB/SOBASE/src/java/cat/urv/deim/sob/Room.java</file>
-            <file>file:/C:/REST-SOB/SOBASE/web/index.html</file>
-            <file>file:/C:/REST-SOB/SOBASE/web/install.jsp</file>
-            <file>file:/C:/REST-SOB/SOBASE/web/navbar.jsp</file>
-            <file>file:/C:/REST-SOB/SOBASE/web/WEB-INF/web.xml</file>
-            <file>file:/C:/REST-SOB/SOBASE/web/room-view.jsp</file>
-            <file>file:/C:/REST-SOB/SOBASE/web/styles.css</file>
+            <file>file:/C:/REST-SOB/SOBASE/src/java/cat/urv/deim/sob/command/InitCommand.java</file>
+            <file>file:/C:/REST-SOB/SOBASE/src/java/cat/urv/deim/sob/RoomClient.java</file>
             <file>file:/C:/REST-SOB/SOBASE/src/java/cat/urv/deim/sob/command/RoomCommand.java</file>
-            <file>file:/C:/REST-SOB/SOBASE/src/java/cat/urv/deim/sob/command/Command.java</file>
         </group>
     </open-files>
 </project-private>
