@@ -5,6 +5,7 @@
  */
 package cat.urv.deim.sob.command;
 
+import cat.urv.deim.sob.UserClient;
 import cat.urv.deim.sob.Tenant;
 import cat.urv.deim.sob.Room;
 import cat.urv.deim.sob.RoomClient;
@@ -35,19 +36,23 @@ public class LoginCommand implements Command{
             HttpServletResponse response)
             throws ServletException, IOException {
         
-        System.out.println("USER: " +request.getParameter("username"));
+        System.out.println("USER in command: " +request.getParameter("username"));
+        System.out.println("USER in command: " +request.getParameter("username"));
+
         String u = request.getParameter("username");
         String p = request.getParameter("password");
         
-        TenantClient c = new TenantClient();
-        Response res = c.find(null, "213");      
+        UserClient c = new UserClient();
+        Response res = c.login();    
+        
+     
         
         System.out.println("STATUS: " + res.getStatus());
-        System.out.println("username A BUSCAR: " + u);
 
                 
         if(res.getStatus() == 200) {
             User user = res.readEntity(User.class);
+            System.out.println("username A BUSCAR: " + user.getUsername());
             request.setAttribute("username", user.getUsername());
             System.out.println("Capturo el username: " + user.getUsername());
             request.getRequestDispatcher("/room-view.jsp").forward(request, response);

@@ -111,15 +111,15 @@ public class TenantFacadeREST extends AbstractFacade<Tenant> {
     public Response login(@HeaderParam("username") String u,
             @HeaderParam("password") String p) {
         
-        GenericEntity<List<User>> generic;
+        /*GenericEntity<List<User>> generic;
         // System.out.println("USER: "+ username);
         List<User> userList = em.createNamedQuery("Usuari.login")
                 .setParameter("username", u)
                 .setParameter("password", p)
-                .getResultList();
+                .getResultList();setParameter
         generic = new GenericEntity<List<User>>(userList.subList(0, 1)) {
-        };
-        return Response.status(Response.Status.OK).entity(generic).build();
+        };*/
+        return Response.status(Response.Status.BAD_REQUEST).build();
     }
     
     
