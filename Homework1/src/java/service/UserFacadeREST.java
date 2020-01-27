@@ -99,18 +99,30 @@ public class UserFacadeREST extends AbstractFacade<User> {
         
         if (usernameList != null && username != null && password != null) {
             GenericEntity<User> generic;
+            User u;
             //System.out.println("\n\n\nHOLA\n\n\n");
             List<User> userList;
-            userList = em.createNamedQuery("Usuari.login")
+            try {
+                userList = em.createNamedQuery("Usuari.login")
                     .setParameter("username", username)
                     .setParameter("password", password).getResultList();
-            User u = userList.get(0);
+                u = userList.get(0);
+            } catch (Exception e){
+                System.out.println("Not correct credentials");
+                return Response.status(Response.Status.UNAUTHORIZED).build();
+            }
+            
+            // System.out.println("REGISTED USER: " +  u.toString());
+            
+            if (u == null ){
+                return Response.status(Response.Status.UNAUTHORIZED).build();
 
-            generic = new GenericEntity<User>(u){};
-
-            return Response.status(Response.Status.OK).entity(generic).build();
+            } else {
+                generic = new GenericEntity<User>(u){};
+                return Response.status(Response.Status.OK).entity(generic).build();
+            }
         } else {
-            return Response.status(Response.Status.UNAUTHORIZED).build();
+            return Response.status(Response.Status.MOVED_PERMANENTLY).build();
         }
     }
 

@@ -79,8 +79,8 @@ public class UserClient {
         webTarget.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).post(javax.ws.rs.client.Entity.entity(requestEntity, javax.ws.rs.core.MediaType.APPLICATION_JSON));
     }
 
-    public Response login() throws ClientErrorException {
-        return webTarget.path("login").request().post(null, Response.class);
+    public Response login(String u, String p) throws ClientErrorException {
+        return webTarget.path("login").request().header("username", u).header("password", p).post(null, Response.class);
     }
 
     public <T> T findAll_XML(Class<T> responseType) throws ClientErrorException {

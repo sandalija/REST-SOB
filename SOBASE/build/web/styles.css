@@ -35,3 +35,10 @@ and open the template in the editor.
   top: 30%;
   right: 25px;
 } 
+
+.bad-login {
+    color: white;
+    background-color: red;
+    size: 12px;
+    width: 40%;
+}

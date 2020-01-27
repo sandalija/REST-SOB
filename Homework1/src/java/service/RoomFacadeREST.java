@@ -17,6 +17,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -83,109 +84,10 @@ public class RoomFacadeREST extends AbstractFacade<Room> {
         return room;
     }
     
-    /*
-    @GET
-    @Path("{sort}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Room> findWithPrice(){
-        /*List<Room> lista = super.findAll();
-        if (sequence.equals("asc")) {
-            Collections.sort(lista);
-        }
-        else {
-            Collections.reverse(lista);
-        }
-        return lista;
-        return super.findAll();
-    }*/
-    /*
-    @GET
-    @Override
-    @Produces( MediaType.APPLICATION_JSON)
-    public List<Room> findAll(@QueryParam("sort") String sort) {
-        List<Room> roomList = super.findAll();
-        if (sort == null) sort = "asc";
-        
-        if (sort ==)
-    }*/
-    
-    /*
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response findAll(@QueryParam("sort") String sort)
-    {
-        List<Room> RoomList;
-        RoomList = super.findAll();
-        List<Room> RoomList_Ordered = new ArrayList<>();
-
-        switch (sort)
-        {
-            case "asc":
-                //RoomList_Ordered = RoomList.stream().sorted((Room_A, Room_B);
-                Collections.sort(RoomList, new RoomComparator());
-                break;
-            case "desc":
-                Collections.sort(RoomList, new RoomComparator());
-                break;
-        }
-        GenericEntity<List<Room>> generic = new GenericEntity<List<Room>>(RoomList_Ordered){};
-        return Response.status(Response.Status.OK).entity(generic).build();
-        //return RoomList;
-        
-    }
-    */
-
-    
-
-   
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
-    
-    
-    /*
-    @GET
-    @Path({sort})
-    @Produces (MediaType.JSON)
-    public Response findAll(|QueryParam "sort" String sotr, ...) {
-        Response 
-        if (sort == null) {
-            // retorna ERROR. BADREQUEST . entity (miisatge error);
-          } else if (sort == asc) {
-                // Cridar a la namedQuery
-                Collections lista = em.createNamedQuey(...).getResultList();
-                // Collections con GenericEntity
-            }
-            return ...;
-    
-    */
-    
-    /*
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response findByOrder(@QueryParam("sort") String sort)
-    {
-       List<Room> RoomList;
-       GenericEntity<List<Room>> generic;
-       
-       switch (sort) {
-           case "asc": 
-               RoomList = em.createNamedQuery("Room.OrderByASC").getResultList();
-               generic = new GenericEntity<List<Room>>(RoomList){};
-               break;
-           case "desc": 
-               RoomList = em.createNamedQuery("Room.OrderByDESC").getResultList();
-               generic = new GenericEntity<List<Room>>(RoomList){};
-               break;//.entity(em.createNamedQuery("Room.OrderByDESC").getResultList()).build();
-           default:
-               return Response.status(Response.Status.BAD_REQUEST).build();
-       }
-       
-       return Response.status(Response.Status.OK).entity(generic).build();
-       
-    }*/
-    
     
     
     @GET
@@ -232,60 +134,24 @@ public class RoomFacadeREST extends AbstractFacade<Room> {
        return Response.status(Response.Status.OK).entity(generic).build();
     }
     
-    /* ara
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Room> findByOrder(@QueryParam ("sort") String sort){
-        List<Room> RoomList;
-        //RoomList = em.createNamedQuery("Room.orderByASC").getResultList();
-        RoomList = super.findAll();
-        if (sort.equals("desc")){
-           Collections.reverse(RoomList);
-        } 
-        return RoomList;
-    }*/
-    
-    /*
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response findByOrder(@QueryParam ("sort") String sort,
-            @QueryParam ("location") String location){
-        List<Room> RoomList;
-        //RoomList = em.createNamedQuery("Room.orderByASC").getResultList();
-        RoomList = super.findAll();
-        if (sort.equals("desc")){
-           Collections.reverse(RoomList);
-        } else if (sort.equals("asc")) {
-            RoomList = em.createNamedQuery("Room.orderByASC").getResultList();
-        } else {
+    @Path("{id}/rent")
+    public Response rent(@PathParam("roomId") int roomId, 
+            @HeaderParam("tenantId") int tenantId){
+        Room room = super.find(roomId);
+        if (room == null) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
-        GenericEntity<List<Room>> generic = new GenericEntity<List<Room>>(RoomList){};
-        return Response.status(Response.Status.OK).entity(generic).build();
-        /*
-        //GenericEntity<List<Room>> generic = new GenericEntity<List<Room>>(RoomList){};
-        if (sort.equals("desc") || sort.equals("asc")){
-            return Response.status(Response.Status.OK).entity(generic).build();
-        } else {
+        
+        Tenant tenant = em.createNamedQuery("Usuari.login")
+        if (room == null) {
             return Response.status(Response.Status.BAD_REQUEST).build();
-        }*
-    
+        }
         
-    }*/
-        
-    
-    
-    
-    
-       //         GenericEntity<List<Room>> generic = new GenericEntity<List<Room>>(RoomList_Ordered){};
 
-        /*
-        if (sort.equals("asc")) {
-            return Response.status(Response.Status.OK).entity(em.createNamedQuery("Room.OrderByASC").getResultList()).build();
-        } else if (sort.equals("desc")){
-            return Response.status(Response.Status.OK).entity(em.createNamedQuery("Room.OrderByDESC").getResultList()).build();
-        } else {
-            return Response.status(Response.Status.BAD_REQUEST).build();
-        }*/
+        
+        
+    }
+    
     
 }

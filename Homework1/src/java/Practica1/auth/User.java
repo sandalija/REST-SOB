@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Usuari.findByUsername", query = "SELECT u FROM User u WHERE u.username = :username"),
     @NamedQuery(name = "Usuari.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password"),
     @NamedQuery(name = "Usuari.login", query = "SELECT u FROM User u WHERE u.username = :username AND u.password = :password")
-})
+
 public class User implements Serializable{
     
     private static final long serialVersionUID = 1L;

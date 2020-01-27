@@ -21,6 +21,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 // @NamedQuery's
 @Entity
 @Table(name= "TENANT")
+@NamedQueries({
+    @NamedQuery(name = "Tenant.findById", query = "SELECT t FROM Tenant t "
+            + "WHERE t.tenantId = :tenantID")
+})
 @XmlRootElement
 public class Tenant implements Serializable{
     private static final long serialVersionUID = 1L;
