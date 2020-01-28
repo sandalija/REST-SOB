@@ -13,9 +13,12 @@
             <file>file:/C:/REST-SOB/SOBASE/src/java/cat/urv/deim/sob/Room.java</file>
             <file>file:/C:/REST-SOB/SOBASE/src/java/cat/urv/deim/sob/TenantClient.java</file>
             <file>file:/C:/REST-SOB/SOBASE/src/java/cat/urv/deim/sob/Tenant.java</file>
+            <file>file:/C:/REST-SOB/SOBASE/src/java/cat/urv/deim/sob/command/LogoutCommand.java</file>
+            <file>file:/C:/REST-SOB/SOBASE/web/WEB-INF/sun-web.xml</file>
             <file>file:/C:/REST-SOB/SOBASE/web/navbar.jsp</file>
             <file>file:/C:/REST-SOB/SOBASE/web/install.jsp</file>
             <file>file:/C:/REST-SOB/SOBASE/web/WEB-INF/web.xml</file>
+            <file>file:/C:/REST-SOB/SOBASE/web/user-view.jsp</file>
             <file>file:/C:/REST-SOB/SOBASE/web/styles.css</file>
             <file>file:/C:/REST-SOB/SOBASE/src/java/cat/urv/deim/sob/command/InitCommand.java</file>
             <file>file:/C:/REST-SOB/SOBASE/src/java/cat/urv/deim/sob/RoomClient.java</file>

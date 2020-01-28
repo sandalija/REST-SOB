@@ -36,27 +36,36 @@ public class LoginCommand implements Command{
      
         
         System.out.println("STATUS: " + res.getStatus());
-
-                
-        switch (res.getStatus()) {
+        
+       HttpSession session = request.getSession();  
+        
+        if (session.getAttribute("username") != null) {
+            request.getRequestDispatcher("/user-view.jsp").forward(request, response);
+        } else {
+            switch (res.getStatus()) {
             case 200:
                 User user = res.readEntity(User.class);
                 //System.out.println("username A BUSCAR: " + user.getUsername());
                 String username = user.getUsername();
                 request.setAttribute("username", username);
                 //System.out.println("Capturo el username: " + user.getUsername());
-                HttpSession session = request.getSession();  
+                session = request.getSession();  
                 session.setAttribute("username", username); 
                 request.getRequestDispatcher("/list-room.do?sort=asc").forward(request, response);
                 break;
             case 401:
                 request.setAttribute("auth", "false");
-                request.getRequestDispatcher("/login-register.jsp").forward(request, response);
+                request.getRequestDispatcher("/login.do").forward(request, response);
                 break;
             default:
-                response.sendRedirect("/login-register.jsp");
+                request.getRequestDispatcher("/login-register.jsp").forward(request, response);;
+                //response.sendRedirect("/SOBASE/login.do");
                 break;
         }
+        }
+
+                
+        
 
       
     }

@@ -10,6 +10,14 @@
                     %>
                 <a class="nav-link" href="http://localhost:8080/SOBASE/login.do"> <%= message %> </a>
               </li>
+              <li>
+                  <%
+                    if (!message.equals("Login")) {
+                        message = "Logout";
+                       %> <a class="nav-link" href="http://localhost:8080/SOBASE/logout.do"> <%= message %> </a> <%
+                    }
+                    %>
+              </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" action="http://localhost:8080/SOBASE/list-room.do?sort=asc" method="get">
                 <input class="form-control mr-sm-2" name="location" type="text" placeholder="Search" aria-label="Search">

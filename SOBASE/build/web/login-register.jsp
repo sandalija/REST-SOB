@@ -15,31 +15,33 @@
     </head>
     <body>
         <%@ include file="/navbar.jsp"  %>
-
-        <div class="center-login">
-            <form class="form-signin" action="login.do" method="post">
-                <h1 class="h3 mb-3 font-weight-normal order-label">Please sign in</h1>
-                <label for="username" class="sr-only">Username</label>
-                <input type="text" id="username" name ="username" class="form-control order-label" placeholder="username" required>
-                <input type="text" id="inputPassword" name ="password" class="form-control order-label" placeholder="Password" required>
-                <button class="btn btn-lg btn-primary btn-block order-label" type="submit">Login</button>
-                <% if (request.getAttribute("auth") != null) {
-                    if (request.getAttribute("auth").equals("false")) {
-                %> <p class="btn-warning">Sign in failed</p> <%
-                    }
-                }
-                %>
-                
-                <lr />
-            </form>
-            <form class="form-signin" action="register.do" method="post">
-                <h1 class="h3 mb-3 font-weight-normal order-label">Register</h1>
-                <label for="username" class="sr-only">Username</label>
-                <input type="text" id="username" name ="username" class="form-control order-label" placeholder="username" required>
-                <input type="text" id="inputPassword" name ="password" class="form-control order-label" placeholder="Password" required>
-                <button class="btn btn-lg btn-primary btn-block order-label" type="submit">Register</button>
-                <lr />
-            </form>
+        <div class="d-flex justify-content-between">
+            <div class="center-login">
+                <div>
+                    <form class="form-signin" action="login.do" method="post">
+                        <h1 class="h3 mb-3 font-weight-normal order-label">Please sign in</h1>
+                        <label for="username" class="sr-only">Username</label>
+                        <input type="text" id="username" name ="username" class="form-control order-label" placeholder="username" required>
+                        <input type="text" id="inputPassword" name ="password" class="form-control order-label" placeholder="Password" required>
+                        <button class="btn btn-lg btn-primary btn-block order-label" type="submit">Login</button>
+                        <% if (request.getAttribute("auth") != null) {
+                            if (request.getAttribute("auth").equals("false")) {
+                        %> <p class="btn-warning">Sign in failed</p> <%
+                            }
+                        }
+                        %>
+                     </form>
+                </div>
+                <div>
+                    <form class="form-signin" action="login.do" method="post">
+                        <h1 class="h3 mb-3 font-weight-normal order-label">Please sign in</h1>
+                        <label for="username" class="sr-only">Username</label>
+                        <input type="text" id="username" name ="username" class="form-control order-label" placeholder="username" required>
+                        <input type="text" id="inputPassword" name ="password" class="form-control order-label" placeholder="Password" required>
+                        <button class="btn btn-lg btn-primary btn-block order-label" type="submit">Register</button>
+                     </form>
+                </div>
+            </div>
         </div>
     </body>
 </html>

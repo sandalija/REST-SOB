@@ -133,25 +133,5 @@ public class RoomFacadeREST extends AbstractFacade<Room> {
        
        return Response.status(Response.Status.OK).entity(generic).build();
     }
-    
-    @GET
-    @Path("{id}/rent")
-    public Response rent(@PathParam("roomId") int roomId, 
-            @HeaderParam("tenantId") int tenantId){
-        Room room = super.find(roomId);
-        if (room == null) {
-            return Response.status(Response.Status.BAD_REQUEST).build();
-        }
-        
-        Tenant tenant = em.createNamedQuery("Usuari.login")
-        if (room == null) {
-            return Response.status(Response.Status.BAD_REQUEST).build();
-        }
-        
 
-        
-        
-    }
-    
-    
 }
