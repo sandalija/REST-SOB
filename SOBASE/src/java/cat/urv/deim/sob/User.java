@@ -37,6 +37,10 @@ public class User implements Serializable{
     private String password;
     @Column(name = "TENANT_ID")
     private int tenant_id;
+    
+    private static int userIdBase = 900;
+    private static int tenantIdBase = 900;
+
 
     public User() {
     }
@@ -47,6 +51,16 @@ public class User implements Serializable{
         this.password = password;
         this.tenant_id = tenant_id;
     }
+    
+    public User(String username, String password) {
+        this.usuari_id = userIdBase;
+        userIdBase++;
+        this.username = username;
+        this.password = password;
+        this.tenant_id = tenantIdBase;
+        tenantIdBase++;
+    }
+    
 
     public int getUsuari_id() {
         return usuari_id;

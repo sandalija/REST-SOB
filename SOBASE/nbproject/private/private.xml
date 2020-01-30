@@ -7,21 +7,23 @@
             <file>file:/C:/REST-SOB/SOBASE/web/list-room-view.jsp</file>
             <file>file:/C:/REST-SOB/SOBASE/src/java/cat/urv/deim/sob/command/FindRoomCommand.java</file>
             <file>file:/C:/REST-SOB/SOBASE/src/java/cat/urv/deim/sob/User.java</file>
+            <file>file:/C:/REST-SOB/SOBASE/src/java/cat/urv/deim/sob/command/RegisterCommand.java</file>
             <file>file:/C:/REST-SOB/SOBASE/src/java/cat/urv/deim/sob/command/LoginCommand.java</file>
-            <file>file:/C:/REST-SOB/SOBASE/web/login-register.jsp</file>
+            <file>file:/C:/REST-SOB/SOBASE/web/register.jsp</file>
             <file>file:/C:/REST-SOB/SOBASE/src/java/cat/urv/deim/sob/UserClient.java</file>
             <file>file:/C:/REST-SOB/SOBASE/src/java/cat/urv/deim/sob/Room.java</file>
             <file>file:/C:/REST-SOB/SOBASE/src/java/cat/urv/deim/sob/TenantClient.java</file>
             <file>file:/C:/REST-SOB/SOBASE/src/java/cat/urv/deim/sob/Tenant.java</file>
             <file>file:/C:/REST-SOB/SOBASE/src/java/cat/urv/deim/sob/command/LogoutCommand.java</file>
-            <file>file:/C:/REST-SOB/SOBASE/web/WEB-INF/sun-web.xml</file>
             <file>file:/C:/REST-SOB/SOBASE/web/navbar.jsp</file>
             <file>file:/C:/REST-SOB/SOBASE/web/install.jsp</file>
             <file>file:/C:/REST-SOB/SOBASE/web/WEB-INF/web.xml</file>
             <file>file:/C:/REST-SOB/SOBASE/web/user-view.jsp</file>
+            <file>file:/C:/REST-SOB/SOBASE/web/room-view.jsp</file>
             <file>file:/C:/REST-SOB/SOBASE/web/styles.css</file>
             <file>file:/C:/REST-SOB/SOBASE/src/java/cat/urv/deim/sob/command/InitCommand.java</file>
             <file>file:/C:/REST-SOB/SOBASE/src/java/cat/urv/deim/sob/RoomClient.java</file>
+            <file>file:/C:/REST-SOB/SOBASE/web/login.jsp</file>
             <file>file:/C:/REST-SOB/SOBASE/src/java/cat/urv/deim/sob/command/RoomCommand.java</file>
         </group>
     </open-files>

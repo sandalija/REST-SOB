@@ -15,6 +15,10 @@
     {
       "URI": "/logout",
       "class": "cat.urv.deim.sob.command.LogoutCommand" 
+    },
+    {
+      "URI": "/register",
+      "class": "cat.urv.deim.sob.command.RegisterCommand" 
     }
   ]
 }

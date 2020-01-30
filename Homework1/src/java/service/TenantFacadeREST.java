@@ -44,7 +44,7 @@ public class TenantFacadeREST extends AbstractFacade<Tenant> {
 
     @POST
     @Override
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Consumes( MediaType.APPLICATION_JSON)
     public void create(Tenant entity) {
         super.create(entity);
     }

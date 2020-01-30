@@ -6,9 +6,14 @@
               <li class="nav-item">
                   <%
                     String message = (String) session.getAttribute("username");
-                    if (message == null) message = "Login";
-                    %>
-                <a class="nav-link" href="http://localhost:8080/SOBASE/login.do"> <%= message %> </a>
+                    if (message == null) message = "Login"; {
+                        %> <a class="nav-link" href="http://localhost:8080/SOBASE/login.jsp"> <%= message %> </a> 
+                     <% }
+                    if (message.equals("Login")) { %>
+                    <li> 
+                         <a class="nav-link" href="http://localhost:8080/SOBASE/register.jsp"> Register </a>
+                    </li>
+                    <%   }    %>                 
               </li>
               <li>
                   <%
