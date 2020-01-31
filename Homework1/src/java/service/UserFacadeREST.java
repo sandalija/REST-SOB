@@ -42,6 +42,18 @@ public class UserFacadeREST extends AbstractFacade<User> {
     public void create(User entity) {
         super.create(entity);
     }
+    
+    @POST
+    @Path("/signin")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response signin(User entity) {
+        Response res;
+
+        super.create(entity);
+        res = Response.status(Response.Status.OK).build();
+
+        return res;
+    }
 
     @PUT
     @Path("{id}")

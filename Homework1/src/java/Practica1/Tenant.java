@@ -3,6 +3,7 @@ package Practica1;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,16 +20,19 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 // @XmlRootElement
 // @NamedQuery's
-@Entity
-@Table(name= "TENANT")
+// @Entity
+@Embeddable
+//@Table(name= "TENANT")
+/*
 @NamedQueries({
     @NamedQuery(name = "Tenant.findById", query = "SELECT t FROM Tenant t "
             + "WHERE t.tenantId = :tenantID")
 })
-@XmlRootElement
+*/
+// @XmlRootElement
 public class Tenant implements Serializable{
     private static final long serialVersionUID = 1L;
-    @Id   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Tenant_Gen")
+    //@Id   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Tenant_Gen")
     @Column(name= "TENANT_ID")
     private Integer tenantId;
     @Size(max = 30)
@@ -48,6 +52,8 @@ public class Tenant implements Serializable{
     private int mascotes;
     @Column(name= "FUMADOR")
     private int fumador;
+    
+    private static int tenantBase = 1000;
     
     public Tenant() {
     }
@@ -75,6 +81,14 @@ public class Tenant implements Serializable{
     
     public Tenant(Integer tenantId, String nom, String email, String tlf) {
         this.tenantId = tenantId;
+        this.nom = nom;
+        this.email = email;
+        this.tlf = tlf;
+    }
+    
+    public Tenant(String nom, String email, String tlf) {
+        this.tenantId = tenantBase;
+        tenantBase++;
         this.nom = nom;
         this.email = email;
         this.tlf = tlf;

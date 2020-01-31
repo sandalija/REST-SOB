@@ -9,6 +9,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import Practica1.*;
 
 /**
  *
@@ -34,18 +35,23 @@ public class User implements Serializable{
     @Size(max = 32)
     @Column(name = "PASSWORD")
     private String password;
-    @Column(name = "TENANT_ID")
-    private int tenant_id;
+    @Embedded
+    @Column(name = "TENANT")
+    private Tenant tenant;
+    
+    private static int baseUser = 1000;
 
     public User() {
     }
 
-    public User(int usuari_id, String username, String password, int tenant_id) {
-        this.usuari_id = usuari_id;
+    public User(String username, String password, Tenant tenant) {
+        this.usuari_id = baseUser;
+        baseUser++;
         this.username = username;
         this.password = password;
-        this.tenant_id = tenant_id;
+        this.tenant = tenant;
     }
+
 
     public int getUsuari_id() {
         return usuari_id;
@@ -71,16 +77,14 @@ public class User implements Serializable{
         this.password = password;
     }
 
-    public int getTenant_id() {
-        return tenant_id;
+    public Tenant getTenant() {
+        return tenant;
     }
 
-    public void setTenant_id(int tenant_id) {
-        this.tenant_id = tenant_id;
+    public void setTenant(Tenant tenant) {
+        this.tenant = tenant;
     }
 
-   
-    
     
     
 }

@@ -3,6 +3,7 @@ package cat.urv.deim.sob;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,12 +20,19 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 // @XmlRootElement
 // @NamedQuery's
-@Entity
-@Table(name= "TENANT")
-@XmlRootElement
+// @Entity
+@Embeddable
+//@Table(name= "TENANT")
+/*
+@NamedQueries({
+    @NamedQuery(name = "Tenant.findById", query = "SELECT t FROM Tenant t "
+            + "WHERE t.tenantId = :tenantID")
+})
+*/
+// @XmlRootElement
 public class Tenant implements Serializable{
     private static final long serialVersionUID = 1L;
-    @Id   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Tenant_Gen")
+    //@Id   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Tenant_Gen")
     @Column(name= "TENANT_ID")
     private Integer tenantId;
     @Size(max = 30)
@@ -45,12 +53,36 @@ public class Tenant implements Serializable{
     @Column(name= "FUMADOR")
     private int fumador;
     
+    private static int tenantBase = 1000;
+    
     public Tenant() {
     }
 
     public int getEdat() {
         return edat;
     }
+    
+     public Tenant(String nom, String email, String tlf) {
+        this.tenantId = tenantBase;
+        tenantBase++;
+        this.nom = nom;
+        this.email = email;
+        this.tlf = tlf;
+    }
+
+    public Tenant(String nom, String email, String tlf, int edat, String sexe, int mascotes, int fumador) {
+        this.tenantId = tenantBase;
+        tenantBase++;
+        this.nom = nom;
+        this.email = email;
+        this.tlf = tlf;
+        this.edat = edat;
+        this.sexe = sexe;
+        this.mascotes = mascotes;
+        this.fumador = fumador;
+    }
+     
+     
 
     public void setEdat(int edat) {
         this.edat = edat;

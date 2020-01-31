@@ -7,6 +7,7 @@ package cat.urv.deim.sob;
 
 import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.client.Client;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
 
@@ -81,6 +82,10 @@ public class UserClient {
 
     public Response login(String u, String p) throws ClientErrorException {
         return webTarget.path("login").request().header("username", u).header("password", p).post(null, Response.class);
+    }
+    
+    public Response signin(User u) throws ClientErrorException {
+        return webTarget.path("signin").request().post(Entity.json(u));
     }
 
     public <T> T findAll_XML(Class<T> responseType) throws ClientErrorException {

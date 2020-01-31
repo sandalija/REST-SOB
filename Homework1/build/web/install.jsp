@@ -73,6 +73,7 @@
                     + "MASCOTES, DESCRIPTION) VALUES (NEXT VALUE FOR Room_Gen, "
                     + "'Tarragona', 'Plaça', 1, 0,"
                     + "1, 72, 'HOME', 0, 50, 1, 1, 'Centrica')", 
+                /*
                 "INSERT INTO " + schema + ".TENANT (TENANT_ID, NAME, EMAIL, PHONE, "
                     + "EDAT, SEXE, MASCOTES, FUMADOR) VALUES (213, 'PEPE',"
                     + " 'mail@mail.com', '+34777666888', 50, 'HOME', 1, 0)",
@@ -90,9 +91,11 @@
                     + " 'mail5@mail.com', '+34777666888', 32, 'HOME', 0, 0)" ,
                 "INSERT INTO " + schema + ".TENANT (TENANT_ID, NAME, EMAIL, PHONE, "
                     + "EDAT, SEXE, MASCOTES, FUMADOR) VALUES (202, 'Mike',"
-                    + " 'mail6@mail.com', '+34777666888', 19, 'HOME', 1, 1)" ,
+                    + " 'mail6@mail.com', '+34777666888', 19, 'HOME', 1, 1)" , */
                 "INSERT INTO " + schema + ".USUARI (USUARI_ID, USERNAME, PASSWORD, " 
-                       + "TENANT_ID) VALUES (1, 'sob', 'sob', 0)"
+                       + "TENANT_ID, NAME, EMAIL, PHONE, EDAT, SEXE, MASCOTES,"
+                    + "FUMADOR) VALUES (1, 'sob', 'sob', 202, 'Mike Garcia',"
+                    + " 'mail6@mail.com', '+34777666888', 19, 'HOME', 1, 1)"
             };
             for (String datum : data) {
                 if (stmt.executeUpdate(datum)<=0) {
