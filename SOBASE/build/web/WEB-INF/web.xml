@@ -25,8 +25,8 @@
     </servlet-mapping>
     
     <welcome-file-list>
-        <welcome-file>list-room.do?sort=asc</welcome-file>
-        <welcome-file>login.do</welcome-file>
+        <welcome-file>welcome.html</welcome-file>
+        <welcome-file>/login.do</welcome-file>
     </welcome-file-list>
     
     <error-page>

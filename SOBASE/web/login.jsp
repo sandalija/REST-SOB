@@ -15,6 +15,16 @@
     </head>
     <body>
         <%@ include file="/navbar.jsp"  %>
+        <% if (request.getAttribute("auth") != null) {
+                            if (request.getAttribute("auth").equals("false")) {
+                                %> <div class="alert alert-primary" role="alert">
+                                    Sign in failed</div> <%
+                            } else if (request.getAttribute("auth").equals("needed")) {
+                        %> <div class="alert alert-primary" role="alert">
+                                    Need login</div> <%
+                            }
+                        }
+        %>
         <div class="d-flex justify-content-between">
             <div class="center-login">
                 <div>
@@ -24,12 +34,8 @@
                         <input type="text" id="username" name ="username" class="form-control order-label" placeholder="username" required>
                         <input type="text" id="inputPassword" name ="password" class="form-control order-label" placeholder="Password" required>
                         <button class="btn btn-lg btn-primary btn-block order-label" type="submit">Login</button>
-                        <% if (request.getAttribute("auth") != null) {
-                            if (request.getAttribute("auth").equals("false")) {
-                        %> <p class="btn-warning">Sign in failed</p> <%
-                            }
-                        }
-                        %>
+                        
+                       
                      </form>
                 </div>
              </div>

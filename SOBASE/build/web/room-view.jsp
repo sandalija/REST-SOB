@@ -18,6 +18,9 @@
         <link rel="stylesheet" href="./styles.css" type="text/css" />
     </head>
     <body>
+        <%
+            
+        %>
         <%@ include file="/navbar.jsp"  %>
 
         <div class="container-fluid">
@@ -39,7 +42,7 @@
 
               <!-- Social buttons using anchor elements and btn-primary class to style -->
               <p>
-                <a class="btn btn-primary btn-xs" href="#" role="button">Book it</a>
+                <a class="btn btn-primary btn-xs" href="book.do" role="button">Book it</a>
               </p>
 
           </div>

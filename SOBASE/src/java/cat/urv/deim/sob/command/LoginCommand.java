@@ -5,6 +5,7 @@
  */
 package cat.urv.deim.sob.command;
 
+import cat.urv.deim.sob.Tenant;
 import cat.urv.deim.sob.UserClient;
 import cat.urv.deim.sob.User;
 import java.io.IOException;
@@ -51,14 +52,20 @@ public class LoginCommand implements Command{
                 //System.out.println("Capturo el username: " + user.getUsername());
                 session = request.getSession();  
                 session.setAttribute("username", username); 
+                Tenant tenant = user.getTenant();
+                session.setAttribute("age", tenant.getEdat());
+                session.setAttribute("smoke", tenant.getFumador());
+                session.setAttribute("pets", tenant.getMascotes());
+                session.setAttribute("sex", tenant.getFumador());
+                session.setAttribute("auth", "true");
                 request.getRequestDispatcher("/list-room.do?sort=asc").forward(request, response);
                 break;
             case 401:
                 request.setAttribute("auth", "false");
-                request.getRequestDispatcher("/login.do").forward(request, response);
+                request.getRequestDispatcher("/login.jsp").forward(request, response);
                 break;
             default:
-                request.getRequestDispatcher("/login-register.jsp").forward(request, response);;
+                request.getRequestDispatcher("/login.jsp").forward(request, response);;
                 //response.sendRedirect("/SOBASE/login.do");
                 break;
         }

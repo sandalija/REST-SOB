@@ -32,9 +32,14 @@ public class FindRoomCommand implements Command {
         String sort = request.getParameter("sort");
         String location = request.getParameter("location");
         System.out.println(location);
-        System.out.println(sort);        
-        Response res = c.findByLocation(location, sort);
+        System.out.println(sort);      
         
+        Response res;
+        
+        if (location != null && location.equals("")) {
+                res = c.findByLocation(null, sort);
+        } else  res = c.findByLocation(location, sort);
+
         
         
         System.out.println("STATUS (): " + res.getStatus());

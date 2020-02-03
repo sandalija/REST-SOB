@@ -19,6 +19,10 @@
     {
       "URI": "/register",
       "class": "cat.urv.deim.sob.command.RegisterCommand" 
+    },
+    {
+      "URI": "/book",
+      "class": "cat.urv.deim.sob.command.BookCommand" 
     }
   ]
 }

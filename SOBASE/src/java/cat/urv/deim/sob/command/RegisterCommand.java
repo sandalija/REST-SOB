@@ -67,6 +67,11 @@ public class RegisterCommand implements Command {
         if (res.getStatus() == 200) {
             session = request.getSession();  
             session.setAttribute("username", u);
+            //Tenant tenant = user.getTenant();
+            session.setAttribute("age", tenant.getEdat());
+            session.setAttribute("smoke", tenant.getFumador());
+            session.setAttribute("pets", tenant.getMascotes());
+            session.setAttribute("sex", tenant.getFumador());
             request.getRequestDispatcher("/list-room.do?sort=asc").forward(request, response);
 
         } else {
